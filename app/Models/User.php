@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -19,8 +21,11 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'gender',
+        'nationality',
+        'age',
+        'phoneNumber',
         'email',
-        'password',
     ];
 
     /**
@@ -41,4 +46,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static function store($request ,$id=null){
+        $user = $request->only([
+            'name',
+            'gender',
+            'age',
+            'nationality',
+            'email',
+            'phoneNumber'
+        ]);
+        $user = self::updateOrCreate(['id'=> $id],$user);
+        return $user;
+
+    }
 }
