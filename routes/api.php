@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\EventsController;
+use App\Http\Controllers\eventTeamController;
+use App\Http\Controllers\EventTeamController as ControllersEventTeamController;
+use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\TeamController;
+use App\Http\Controllers\TickerController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,3 +31,38 @@ Route::post('addUsers',[UserController::class,'store']);
 Route::get('getOneUser/{id}',[UserController::class,'show']);
 Route::put('updateUser/{id}',[UserController::class,'update']);
 Route::delete('deleteUser/{id}',[UserController::class,'destroy']);
+
+//Teams
+Route::get('getTeams',[TeamController::class,'index']);
+Route::post('addTeam',[TeamController::class,'store']);
+Route::get('getTeam/{id}',[TeamController::class,'show']);
+Route::put('updateTeam/{id}',[TeamController::class,'update']);
+Route::delete('deleteTeam/{id}',[TeamController::class,'destroy']);
+
+//Tickets
+Route::get('getTickets',[TickerController::class,'index']);
+Route::post('addTicket',[TickerController::class,'store']);
+Route::get('getTicket/{id}',[TickerController::class,'show']);
+Route::put('updateTicket/{id}',[TickerController::class,'update']);
+Route::delete('deleteTicket/{id}',[TickerController::class,'destroy']);
+
+//Schedule
+Route::get('getSchedule',[ScheduleController::class,'index']);
+Route::post('addSchedule',[ScheduleController::class,'store']);
+Route::get('getSchedule/{id}',[ScheduleController::class,'show']);
+Route::put('updateSchedule/{id}',[ScheduleController::class,'update']);
+Route::delete('deleteSchedule/{id}',[ScheduleController::class,'destroy']);
+
+//Events
+Route::get('getEvents',[EventsController::class,'index']);
+Route::post('addEvents',[EventsController::class,'store']);
+Route::get('getEvents/{id}',[EventsController::class,'show']);
+Route::put('updateEvents/{id}',[EventsController::class,'update']);
+Route::delete('deleteEvents/{id}',[EventsController::class,'destroy']);
+
+
+//EventTeam
+Route::get('getEventTeam',[ControllersEventTeamController::class,'index']);
+Route::post('addEventTeam',[ControllersEventTeamController::class,'store']);
+Route::get('getEventTeam/{id}',[ControllersEventTeamController::class,'show']);
+Route::put('updateEventTeam/{id}',[ControllersEventTeamController::class,'update']);

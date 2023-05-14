@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\TicketResource;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 
 class TickerController extends Controller
@@ -12,6 +14,9 @@ class TickerController extends Controller
     public function index()
     {
         //
+        $ticket = Ticket::all();
+        $ticket = TicketResource::collection($ticket);
+        return response()->json(['success'=>true,'data'=>$ticket]);
     }
 
     /**
@@ -20,6 +25,8 @@ class TickerController extends Controller
     public function store(Request $request)
     {
         //
+        $ticket = Ticket::store($request);
+        return response()->json(['success'=>true,'data'=>$ticket]);
     }
 
     /**
@@ -28,6 +35,9 @@ class TickerController extends Controller
     public function show(string $id)
     {
         //
+        $ticket = Ticket::find($id);
+        $ticket = new TicketResource($ticket);
+        return response()->json(['success'=>true,'data'=>$ticket]);
     }
 
     /**
@@ -36,6 +46,8 @@ class TickerController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $ticket = Ticket::store($request,$id);
+        return response()->json(['success'=>true,'data'=>$ticket]);
     }
 
     /**
@@ -44,5 +56,7 @@ class TickerController extends Controller
     public function destroy(string $id)
     {
         //
+        $ticket = Ticket::find($id);
+        return response()->json(['success'=>true,'data'=>$ticket]);
     }
 }

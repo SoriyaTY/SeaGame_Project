@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('eventName');
             $table->text('description');
-            // $table->unsignedBigInteger('schedule_id');
-            // $table->foreign('schedule_id')->references('id')->on('schedules')->onDelete('cascade');
+            $table->unsignedBigInteger('schedule_id');
+            $table->foreign('schedule_id')->references('id')->on('schedules')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

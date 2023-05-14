@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\TeamResource;
+use App\Models\EventTeam;
+use App\Models\Team;
 use Illuminate\Http\Request;
 
 class TeamController extends Controller
@@ -12,6 +15,9 @@ class TeamController extends Controller
     public function index()
     {
         //
+        $team = Team::all();
+        $team = TeamResource::collection($team);
+        return response()->json(['success'=>true,'data'=>$team]);
     }
 
     /**
@@ -20,6 +26,8 @@ class TeamController extends Controller
     public function store(Request $request)
     {
         //
+        $team = Team::store($request);
+        return response()->json(['success'=>true,'data'=>$team]);
     }
 
     /**
@@ -28,6 +36,9 @@ class TeamController extends Controller
     public function show(string $id)
     {
         //
+        $team = Team::find($id);
+        $team = new TeamResource($team);
+        return response()->json(['success'=>true,'data'=>$team]);
     }
 
     /**
@@ -36,6 +47,8 @@ class TeamController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $team = Team::store($request,$id);
+        return response()->json(['success'=>true,'data'=>$team]);
     }
 
     /**
@@ -44,5 +57,16 @@ class TeamController extends Controller
     public function destroy(string $id)
     {
         //
+        $team = Team::find($id)->delete();
+        return response()->json(['success'=>true,'data'=>$team]);
     }
+
+
+    public function eventTeam(Request $request){
+        $eventTeam = EventTeam::create([
+         'event_id'=>request('event_id'),
+         'team_id'=>request('team_id')
+        ]);
+        return response()->json(['success'=>true ,'data'=>$eventTeam]);
+     }
 }

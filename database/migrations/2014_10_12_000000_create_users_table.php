@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('gender');
             $table->string('nationality');
             $table->integer('age');
-            $table->integer('phoneNumber');
+            $table->string('phoneNumber');
             $table->string('email');
             $table->rememberToken();
             $table->timestamps();
