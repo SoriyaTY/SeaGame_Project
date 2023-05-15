@@ -15,7 +15,7 @@ class Events extends Model
         'eventName',
         'description',
         'schedule_id',
-        'user_id',
+        'user_id'
     ];
 
     public function ticket():HasOne
@@ -33,14 +33,16 @@ class Events extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function eventTeam()
+    public function teams()
     {
-        return $this->belongsToMany(EventTeam::class,'eventTeam');
+        return $this->belongsToMany(Team::class,'event_teams')->withTimestamps();
     }
 
     public static function store($request, $id=null){
         $event = $request->only(['eventName','description','schedule_id','user_id']);
         $event = self::updateOrCreate(['id'=>$id],$event);
+        $teams = request('teams');
+        $event->teams()->sync($teams);
         return $event;
     }
 }

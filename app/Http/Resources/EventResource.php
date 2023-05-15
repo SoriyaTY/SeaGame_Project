@@ -18,8 +18,9 @@ class EventResource extends JsonResource
             'id'=>$this->id,
             'eventName'=>$this->eventName,
             'description'=>$this->description,
-            'user'=>$this->user,
-            'schedule'=>$this->schedule
+            'created_by'=>$this->user,
+            'schedule'=>$this->schedule,
+            'teams'=>TeamResource::collection($this->teams)
         ];
     }
 }

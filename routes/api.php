@@ -38,6 +38,7 @@ Route::post('addTeam',[TeamController::class,'store']);
 Route::get('getTeam/{id}',[TeamController::class,'show']);
 Route::put('updateTeam/{id}',[TeamController::class,'update']);
 Route::delete('deleteTeam/{id}',[TeamController::class,'destroy']);
+Route::post('addEventTeam',[TeamController::class,'eventTeam']);
 
 //Tickets
 Route::get('getTickets',[TickerController::class,'index']);

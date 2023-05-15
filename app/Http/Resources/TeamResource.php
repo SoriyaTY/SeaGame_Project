@@ -19,6 +19,7 @@ class TeamResource extends JsonResource
             "name"=>$this->name,
             "country"=>$this->country,
             "member"=>$this->member
+            
         ];
     }
 }
