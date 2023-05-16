@@ -60,10 +60,3 @@ Route::post('addEvents',[EventsController::class,'store']);
 Route::get('getEvents/{id}',[EventsController::class,'show']);
 Route::put('updateEvents/{id}',[EventsController::class,'update']);
 Route::delete('deleteEvents/{id}',[EventsController::class,'destroy']);
-
-
-//EventTeam
-Route::get('getEventTeam',[ControllersEventTeamController::class,'index']);
-Route::post('addEventTeam',[ControllersEventTeamController::class,'store']);
-Route::get('getEventTeam/{id}',[ControllersEventTeamController::class,'show']);
-Route::put('updateEventTeam/{id}',[ControllersEventTeamController::class,'update']);
