@@ -18,9 +18,9 @@ class Events extends Model
         'user_id'
     ];
 
-    public function ticket():HasOne
+    public function tickets():HasMany
     {
-        return $this->hasOne(Ticket::class);
+        return $this->hasMany(Ticket::class);
     }
 
     public function schedule():BelongsTo

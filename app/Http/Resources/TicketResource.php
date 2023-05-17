@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Requests\EventRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -20,7 +21,7 @@ class TicketResource extends JsonResource
             "zone"=>$this->zone,
             "address"=>$this->address,
             "user"=>$this->user,
-            "event"=>$this->event,
+            "events"=>$this->events,
             "schedule"=>$this->schedule
         ];
     }

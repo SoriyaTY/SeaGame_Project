@@ -23,7 +23,7 @@ class Ticket extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function event():BelongsTo
+    public function events():BelongsTo
     {
         return $this->belongsTo(Events::class);
     }
@@ -31,11 +31,6 @@ class Ticket extends Model
     public function schedule():BelongsTo
     {
         return $this->belongsTo(Schedule::class);
-    }
-    
-    public function eventTeam()
-    {
-        return $this->belongsToMany(EventTeam::class);
     }
 
     public static function store($request,$id=null){
