@@ -21,7 +21,7 @@ class TicketResource extends JsonResource
             "zone"=>$this->zone,
             "address"=>$this->address,
             "user"=>$this->user,
-            "events"=>$this->events,
+            "events"=>$this->event,
             "schedule"=>$this->schedule
         ];
     }

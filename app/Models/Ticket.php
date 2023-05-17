@@ -23,7 +23,7 @@ class Ticket extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function events():BelongsTo
+    public function event():BelongsTo
     {
         return $this->belongsTo(Events::class);
     }

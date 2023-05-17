@@ -20,7 +20,7 @@ class EventResource extends JsonResource
             'description'=>$this->description,
             'created_by'=>$this->user,
             'schedule'=>$this->schedule,
-            'ticket'=>$this->teams ?? null,
+            'ticket'=>$this->teams,
             'teams'=>TeamResource::collection($this->teams)
         ];
     }

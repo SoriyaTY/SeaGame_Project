@@ -18,21 +18,21 @@ class Events extends Model
         'user_id'
     ];
 
-    public function tickets():HasMany
-    {
-        return $this->hasMany(Ticket::class);
-    }
-
+    
     public function schedule():BelongsTo
     {
         return $this->belongsTo(Schedule::class);
     }
-
+    
     public function user():BelongsTo
     {
         return $this->belongsTo(User::class);
     }
-
+    
+    public function tickets():HasMany
+    {
+        return $this->hasMany(Ticket::class);
+    }
     public function teams()
     {
         return $this->belongsToMany(Team::class,'event_teams')->withTimestamps();
